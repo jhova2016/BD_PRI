@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/Col1</item>
+        <item name="colorPrimaryDark">@color/Col2</item>
+        <item name="colorAccent">@color/Col3</item>
+    </style>
+</resources>
