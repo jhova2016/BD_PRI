@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bd_pri.Models.Elements.ElementHistory;
 import com.example.bd_pri.Models.Elements.ElementRecycler;
 import com.example.bd_pri.R;
 
@@ -18,11 +19,11 @@ public class AdapterHistory  extends RecyclerView.Adapter<AdapterHistory.ViewHol
 
 
     //ArrayList<String> ListDatos;
-    ArrayList<ElementRecycler> ListDatos;
+    ArrayList<ElementHistory> ListDatos;
     private View.OnClickListener Listener;
     private Context context;
 
-    public AdapterHistory (ArrayList<ElementRecycler> listDatos,Context context) {
+    public AdapterHistory (ArrayList<ElementHistory> listDatos,Context context) {
         this.ListDatos = listDatos;
         this.context=context;
     }
@@ -32,7 +33,7 @@ public class AdapterHistory  extends RecyclerView.Adapter<AdapterHistory.ViewHol
     @NonNull
     @Override
     public AdapterHistory.ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler,parent,false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_history,parent,false);
         view.setOnClickListener(this);
         return new AdapterHistory.ViewHolderDatos(view);
     }
@@ -40,13 +41,8 @@ public class AdapterHistory  extends RecyclerView.Adapter<AdapterHistory.ViewHol
     @Override
     public void onBindViewHolder(@NonNull AdapterHistory.ViewHolderDatos holder, int position) {
 
-        holder.Section.setText(ListDatos.get(position).getSection());
-        holder.Employment.setText(ListDatos.get(position).getEmployment());
         holder.Name.setText(ListDatos.get(position).getName());
-        holder.ElectorKey.setText(ListDatos.get(position).getElectorKey());
-        holder.Phone.setText(ListDatos.get(position).getPhone());
-        holder.DirectBoss.setText(ListDatos.get(position).getDirectBoss());
-        holder.Id=ListDatos.get(position).getId();
+
 
 
     }
@@ -73,23 +69,14 @@ public class AdapterHistory  extends RecyclerView.Adapter<AdapterHistory.ViewHol
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
 
 
-        String Id;
-        TextView Section;
-        TextView Employment;
         TextView Name;
-        TextView ElectorKey;
-        TextView Phone;
-        TextView DirectBoss;
+
 
 
         public ViewHolderDatos(@NonNull View itemView) {
             super(itemView);
-            Section=itemView.findViewById(R.id.Section);
-            Employment=itemView.findViewById(R.id.Employmen);
             Name=itemView.findViewById(R.id.Name);
-            ElectorKey=itemView.findViewById(R.id.ElectorKey);
-            Phone=itemView.findViewById(R.id.Phone);
-            DirectBoss=itemView.findViewById(R.id.DirectBoss);
+
 
 
         }

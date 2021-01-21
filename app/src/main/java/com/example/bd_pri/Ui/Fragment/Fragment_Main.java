@@ -20,6 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bd_pri.Models.Adapters.AdapterElementRecycler;
+import com.example.bd_pri.Models.Adapters.AdapterHistory;
+import com.example.bd_pri.Models.Elements.ElementHistory;
 import com.example.bd_pri.Models.Elements.ElementRecycler;
 import com.example.bd_pri.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -65,6 +67,15 @@ public class Fragment_Main extends Fragment {
     FloatingActionButton FloatingButtonRight;
     //EndRight
 
+    //History
+
+    RecyclerView RecyclerHistory;
+    AdapterHistory AdapterElementRecyclerHistory;
+    final ArrayList<ElementHistory> ElementRecyclerHistory = new ArrayList<ElementHistory>();
+
+    //EndHistory
+
+
     AlertDialog DialogNewElementRight;
 
 
@@ -106,6 +117,9 @@ public class Fragment_Main extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment__main, container, false);
 
+        RecyclerHistory=view.findViewById(R.id.RecyclerHistory);
+        RecyclerHistory.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+
         FloatingButtonRight=view.findViewById(R.id.floatingButtonRight);
 
         RecyclerViewLeft = view.findViewById(R.id.RecyclerLeft);
@@ -114,6 +128,30 @@ public class Fragment_Main extends Fragment {
 
         RecyclerViewRight = view.findViewById(R.id.RecyclerRight);
         RecyclerViewRight.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+
+        ElementRecyclerHistory.clear();
+        ElementRecyclerHistory.add(new ElementHistory("uno"));
+        AdapterElementRecyclerHistory = new AdapterHistory(ElementRecyclerHistory,getContext());
+        AdapterElementRecyclerHistory.notifyDataSetChanged();
+        RecyclerHistory.setAdapter(AdapterElementRecyclerHistory);
+
+        AdapterElementRecyclerHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String Aux=ElementRecyclerHistory.get(RecyclerHistory.getChildAdapterPosition(v)).getName();
+
+                Toast.makeText(getContext(),Aux,Toast.LENGTH_LONG).show();
+
+                FillRecyclerRight("###");
+                FillRecyclerLeft(Aux);
+
+
+
+            }
+        });
+
+
 
         DownDataBase();
 
@@ -154,7 +192,7 @@ public class Fragment_Main extends Fragment {
                                             document.get("Phone").toString(),
                                             document.get("DirectBoss").toString()
                                     ));
-                                FillRecyclerLEft("");
+                                FillRecyclerLeft("");
                             }
 
                         } else {
@@ -167,8 +205,10 @@ public class Fragment_Main extends Fragment {
     }
 
 
-    public void  FillRecyclerLEft(String TypeElement)
+    public void  FillRecyclerLeft(String TypeElement)
     {
+
+
 
         ElementRecyclerLeft.clear();
         for(int i=0;i<ElementAllRecycler.size();i++)
@@ -191,6 +231,8 @@ public class Fragment_Main extends Fragment {
                 String Aux=ElementRecyclerLeft.get(RecyclerViewLeft.getChildAdapterPosition(v)).getName();
 
                 FillRecyclerRight(Aux);
+
+
 
             }
         });
@@ -224,8 +266,13 @@ public class Fragment_Main extends Fragment {
                 String Aux=ElementRecyclerRight.get(RecyclerViewRight.getChildAdapterPosition(v)).getDirectBoss();
                 String Aux2=ElementRecyclerRight.get(RecyclerViewRight.getChildAdapterPosition(v)).getName();
 
-                FillRecyclerLEft(Aux);
+                FillRecyclerLeft(Aux);
                 FillRecyclerRight(Aux2);
+
+                ElementRecyclerHistory.add(new ElementHistory(Aux));
+                AdapterElementRecyclerHistory.notifyDataSetChanged();
+                RecyclerHistory.setAdapter(AdapterElementRecyclerHistory);
+
 
             }
         });
