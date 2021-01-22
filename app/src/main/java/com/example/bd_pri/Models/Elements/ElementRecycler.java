@@ -8,18 +8,28 @@ public class ElementRecycler {
     String Name;
     String Section;
     String Employment;
+    String Direction;
     String ElectorKey;
     String Phone;
     String DirectBoss;
 
-    public ElementRecycler(String id, String name, String section, String employment, String electorKey, String phone, String directBoss) {
+    public ElementRecycler(String id, String name, String section, String employment, String direction, String electorKey, String phone, String directBoss) {
         Id = id;
         Name = name;
         Section = section;
         Employment = employment;
+        Direction = direction;
         ElectorKey = electorKey;
         Phone = phone;
         DirectBoss = directBoss;
+    }
+
+    public String getDirection() {
+        return Direction;
+    }
+
+    public void setDirection(String direction) {
+        Direction = direction;
     }
 
     public String getId() {

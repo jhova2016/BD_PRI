@@ -188,6 +188,7 @@ public class Fragment_Main extends Fragment {
                                             document.get("Name").toString(),
                                             document.get("Section").toString(),
                                             document.get("Employment").toString(),
+                                            document.get("Direction").toString(),
                                             document.get("ElectorKey").toString(),
                                             document.get("Phone").toString(),
                                             document.get("DirectBoss").toString()

@@ -8,10 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="Col1">#8C162C</color>
-    <color name="Col2">#A61B40</color>
-    <color name="Col3">#D9D9D9</color>
-    <color name="Col4">#025949</color>
+    <color name="Col1">#400101</color>
+    <color name="Col2">#730202</color>
+    <color name="Col3">#A60303</color>
+    <color name="Col4">#F20505</color>
     <color name="Col5">#737373</color>
     <color name="AuxWhite">#FFFFFF</color>
     <color name="AuxBlack">#000000</color>
